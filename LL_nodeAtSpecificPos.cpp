@@ -9,7 +9,7 @@ void insertAtPosition(Node* head, int pos, int data){
   
   else {
         Node *temp=head;
-        for(int i=1;i<pos-1;i++) {
+        for(int i=0;i < pos-1; i++) {
           temp=temp->next;
         }
     
