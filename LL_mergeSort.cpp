@@ -1,34 +1,5 @@
 #include <iostream>
- 
 using namespace std;
- 
-// class to represent the
-// node of a linked list
-class Node
-{
-public:
-    int data;
-    Node *next;
- 
-    Node(int data): data(data), next(NULL) {}
-};
- 
-Node* insert_at_head(Node *head, int data)
-{
-    // base case
-    if(head == NULL)
-    {
-        head = new Node(data);
-        return head;
-    }
- 
-    // otherwise
-    Node *temp = head;
-    head = new Node(data);
-    head->next = temp;
- 
-    return head;
-}
  
 Node *merge(Node *a, Node *b)
 {
