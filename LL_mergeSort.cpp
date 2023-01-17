@@ -9,8 +9,6 @@ Node *merge(Node *a, Node *b)
     if(b == NULL)
         return a;
  
-    // recursive case
-    // take a head pointer
     Node *c;
  
     if(a->data < b->data)
@@ -37,10 +35,8 @@ Node *mid_point(Node *head)
     Node *fast = head;
     Node *slow = head;
  
-    while(fast != NULL && fast->next != NULL)
+    while(fast && fast->next)
     {
-        fast = fast->next;
- 
         if(fast->next == NULL)
             break;
  
@@ -57,21 +53,15 @@ Node* merge_sort(Node *head)
     if(head == NULL || head->next == NULL)
         return head;
  
-    // recursive case
-    // Step 1: divide the linked list into
-    // two equal linked lists
     Node *mid = mid_point(head);
     Node *a = head;
     Node *b = mid->next;
  
     mid->next = NULL;
  
-    // Step 2: recursively sort the smaller
-    // linked lists
     a = merge_sort(a);
     b = merge_sort(b);
  
-    // Step 3: merge the sorted linked lists
     Node *c = merge(a, b);
  
     return c;
