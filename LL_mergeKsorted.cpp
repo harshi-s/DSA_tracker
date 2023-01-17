@@ -1,41 +1,43 @@
-Node* SortedMerge(Node* a, Node* b)
-{
-	Node* result = NULL;
- 
-	if (a == NULL)
-		return (b);
-	else if (b == NULL)
-		return (a);
+class Solution {
+public:
+   struct sort {
+       bool operator() (ListNode* x, ListNode* y){
+           bool flag;
+           if(x->val > y->val) flag =true;
+           else flag=false;
 
+           return flag;
+       }
+   };
 
-	if (a->data <= b->data) {
-		result = a;
-		result->next = SortedMerge(a->next, b);
-	}
-	else {
-		result = b;
-		result->next = SortedMerge(a, b->next);
-	}
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        priority_queue<ListNode*, vector<ListNode*>, sort> ans;
 
-	return result;
-}
+        for(ListNode* i:lists){
+            if(i!=NULL) ans.push(i);
+        }
 
-Node* mergeKLists(Node* arr[], int last)
-{
-	
-	while (last != 0) {
-		int i = 0, j = last;
+        ListNode* head=NULL;
+        ListNode* temp=NULL;
+       
+       while(!ans.empty()){
+           ListNode* x=ans.top();
+           ans.pop();
 
-		
-		while (i < j) {
-		
-			arr[i] = SortedMerge(arr[i], arr[j]);
+           if(head==NULL) {
+               head=x;
+               temp=head;
 
-			i++, j--;
-			if (i >= j)
-				last = j;
-		}
-	}
+           }
+           else {
+               temp->next=x;
+               temp=x;
+           }
 
-	return arr[0];
-}
+           if(x->next!=NULL){
+               ans.push(x->next);
+           }
+       }
+return head;
+    }
+};
