@@ -1,20 +1,6 @@
 class Solution
 {
-    private:
-    void insertAtTail(ListNode* &head, ListNode* &tail, int val) {
-        
-        ListNode* temp = new ListNode(val);
-        
-        if(head==NULL) {
-            head=temp;
-            tail=temp;
-            return;
-        }
-        else{
-            tail->next=temp;
-            tail=temp;
-        }}
-        
+   public:        
         ListNode* add(ListNode* &l1, ListNode* &l2) {
         ListNode* dummy = new ListNode();
         ListNode* temp=dummy;
